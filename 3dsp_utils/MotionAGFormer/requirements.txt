@@ -1,0 +1,16 @@
+tqdm
+easydict
+numpy
+torch
+timm==0.6.11
+PyYAML
+matplotlib
+wandb
+torchprofile
+smplx
+scipy
+opencv-python
+numba
+scikit-image
+filterpy
+yacs

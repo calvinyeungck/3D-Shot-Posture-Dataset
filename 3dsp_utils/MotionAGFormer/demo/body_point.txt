@@ -1,0 +1,17 @@
+1 Center of Hips
+2 Left Hip
+3 Left Knee
+4 Left Ankle
+5 Right Hip
+6 Right Knee
+7 Right Ankle
+8 Center of Body
+9 Center of Shoulder
+10 Neck
+11 Head
+12 Right Shoulder
+13 Right Elbow
+14 Right Wrist
+15 Left Shoulder
+16 Left Elbow
+17 Left Wrist
