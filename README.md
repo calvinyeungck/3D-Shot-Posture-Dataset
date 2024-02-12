@@ -1,7 +1,6 @@
 # 3D Shot Posture Dataset
 Todo
 - add the requirement.txt for visualization of 2d and 3d annotation
-- add the analysis code
 
 This dataset consists of the 3d and 2d postures of professional football players under shot situations.
 
@@ -14,6 +13,12 @@ This dataset consists of the 3d and 2d postures of professional football players
 - In 3dsp/test
     - 20 cropped image x 10 shots
     - Tracklet
+
+### [Clustering](https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/tree/master/analysis):
+<div style="display:flex;">
+  <img src="image1.jpg" alt="Image 1" style="width:50%;">
+  <img src="image2.jpg" alt="Image 2" style="width:50%;">
+</div>
 
 ### Data collection method: 
 The broadcast videos were collected from [SoccerNet](https://www.soccer-net.org/), and with annotation on actions, the videos were clipped (0.5 before and after the annotated ms, 25 frames total). The tracklet for the clips was then generated using a fine-tuned [YOLO v8](https://github.com/ultralytics/ultralytics) and [BoT-Sort](https://github.com/NirAharon/BoT-SORT). Furthermore, the shooter's traklet id was manually selected, and the cropped image was generated using the Bbox. The first 20 images' 2D postures (determined empirically) were manually annotated and lifted to 3D using the [MotionAGFormer](https://github.com/TaatiTeam/MotionAGFormer). This repository includes the modified code for [BoT-Sort](https://github.com/NirAharon/BoT-SORT) and [MotionAGFormer](https://github.com/TaatiTeam/MotionAGFormer).
