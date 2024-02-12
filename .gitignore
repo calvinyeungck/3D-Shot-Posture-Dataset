@@ -17,3 +17,7 @@ formatting_train.py
 3dsp_pre_process/
 3dsp_utils/__pycache__
 3dsp_pre_process.zip
+analysis/deep_learning+kmean/params/best_model.pth
+analysis/deep_learning+kmean/__pycache__
+analysis/pca+kmean_result/
+analysis/deep_learning+kmean_result/
