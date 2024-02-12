@@ -17,8 +17,8 @@ This dataset consists of the 3d and 2d postures of professional football players
 ### [Clustering](https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/tree/master/analysis):
 We provide 2 clustering methods, with pca+kmean or deep learning+kmeam. For the result of the clustering, refer to our paper.
 <div style="display:flex;">
-  <img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/elbow_method.png" alt="Image 1" style="width:50%;">
-  <img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/t-SNE.png" alt="Image 2" style="width:50%;">
+  <img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/elbow_method.png" alt="Image 1" style="width:45%;">
+  <img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/t-SNE.png" alt="Image 2" style="width:45%;">
 </div>
 
 ### Data collection method: 
