@@ -117,6 +117,7 @@ def analysis_kmean(df_kmean,outpath,dataset_path,info_path,num_cluster):
     # Perform dimensionality reduction
     len_df_kmean=len(df_kmean)
     df_centers = pd.DataFrame(kmeans.cluster_centers_)
+    df_centers.to_csv(outpath+"/cluster_center.csv")
     df_kmean_embedded = pd.concat([df_kmean, df_centers])
     df_kmean_embedded = df_kmean_embedded.reset_index(drop=True)
 

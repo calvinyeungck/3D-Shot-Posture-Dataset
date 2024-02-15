@@ -17,7 +17,7 @@ import pdb
 def download_soccernet_video(args):
     import SoccerNet
     from SoccerNet.Downloader import SoccerNetDownloader
-    dataset_path=args.root+"SoccerNet"
+    dataset_path=args.root+"/SoccerNet"
     if not os.path.exists(dataset_path):
         os.makedirs(dataset_path)
 
