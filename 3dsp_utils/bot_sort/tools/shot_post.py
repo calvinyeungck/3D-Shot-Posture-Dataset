@@ -322,7 +322,105 @@ def sn_demo(file_path,detector_param_path,vis_folder,file, args,args2):
         # save to file
         df.to_csv(res_file, index=False, header=False)
 
+def sn_demo_image(file_path,detector_param_path,vis_folder,file, args,args2):
 
+    tracker = BoTSORT(args, frame_rate=args.fps)
+    detector = YOLO(detector_param_path)
+
+    timer = Timer()
+    results = []
+    frame_id=1
+    for img_i in range(int(args2.num_frame)):
+        frame = cv2.imread(file_path+"/"+str(img_i+1).zfill(3)+".jpg")
+
+        
+        # Detect objects
+        outputs = detector.predict(
+        source=frame,
+        mode="predict",
+        save=False,
+        device='0',
+        classes=0
+        ) 
+
+        #required format x1,y1,x2,y2,conf,cls
+        detections = []
+        if outputs[0] is not None:
+           
+            outputs = outputs[0].cpu().numpy()
+            bbox=outputs.boxes.xyxy
+            conf=outputs.boxes.conf
+            conf=np.array(conf).reshape(-1,1)
+            cls=outputs.boxes.cls
+            cls=np.array(cls).reshape(-1,1)
+
+            detections=np.concatenate((bbox,conf,cls),axis=1)
+
+            # detections = outputs[:, :7]
+            # detections[:, :4] /= scale
+            img_info={}
+            img_info['raw_img']=outputs.orig_img
+            img_info['height']=outputs.orig_img.shape[0]
+            img_info['width']=outputs.orig_img.shape[1]
+
+            # Run tracker
+            online_targets = tracker.update(detections, img_info['raw_img'])
+            online_tlwhs = []
+            online_ids = []
+            online_scores = []
+            for t in online_targets:
+                tlwh = t.tlwh
+                tid = t.track_id
+                vertical = tlwh[2] / tlwh[3] > args.aspect_ratio_thresh
+                if tlwh[2] * tlwh[3] > args.min_box_area and not vertical:
+                    online_tlwhs.append(tlwh)
+                    online_ids.append(tid)
+                    online_scores.append(t.score)
+                    # save results
+                    results.append([frame_id,tid,round(tlwh[0],4),round(tlwh[1],4),round(tlwh[2],4),round(tlwh[3],4),round(t.score,4),-1,-1,-1])
+
+            timer.toc()
+            online_im = plot_tracking(
+                img_info['raw_img'], online_tlwhs, online_ids, frame_id=frame_id, fps=1. / timer.average_time
+            )
+        else:
+            timer.toc()
+            online_im = img_info['raw_img']
+        
+        if args.save_result and args2.save_image:
+            # timestamp = time.strftime("%Y_%m_%d_%H_%M_%S", current_time)
+            file_copy=file.split(".")[0]
+            file_copy=file_copy.split("/")[-1]
+            save_folder = osp.join(vis_folder, file_copy)
+            # if args2.save_image:
+            os.makedirs(save_folder, exist_ok=True)
+            file_copy=str(frame_id)+".jpg"
+            save_folder = osp.join(save_folder, file_copy)
+            # if args2.save_image:
+            cv2.imwrite(save_folder, online_im)
+            cv2.destroyAllWindows()
+
+        if frame_id % 20 == 0:
+            logger.info('Processing frame {} ({:.2f} fps)'.format(frame_id, 1. / max(1e-5, timer.average_time)))
+
+        ch = cv2.waitKey(0)
+        if ch == 27 or ch == ord("q") or ch == ord("Q"):
+            break
+
+        frame_id+=1
+        if frame_id>args2.num_frame:
+            break
+
+    if args.save_result:
+        file_copy=file.split(".")[0]
+        file_copy=file_copy.split("/")[-1]
+        res_file = osp.join(vis_folder, f"{file_copy}.txt")
+        #convert results to pandas dataframe
+        df = pd.DataFrame(results, columns =['frame', 'id', 'x1', 'y1', 'w', 'h', 's', 'a', 'b', 'c'])
+        # sort by id then frame
+        df = df.sort_values(by=['id','frame'])
+        # save to file
+        df.to_csv(res_file, index=False, header=False)
 
 def imageflow_demo(predictor, vis_folder, current_time, args):
     cap = cv2.VideoCapture(args.path if args.demo == "video" else args.camid)

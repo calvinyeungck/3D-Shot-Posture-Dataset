@@ -20,3 +20,5 @@ formatting_train.py
 analysis/deep_learning+kmean/__pycache__
 analysis/pca+kmean_result/
 analysis/deep_learning+kmean_result/
+3dsp_backup.zip
+3dsp_utils/output/
