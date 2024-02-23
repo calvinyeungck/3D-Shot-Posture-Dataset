@@ -22,10 +22,11 @@ We provide 2 clustering methods, with pca+kmean or deep learning+kmeam. For the 
 </div>
 
 ### Automated 3D Shooter Posture Extraction:
-Extracting the shooter 2D&3D Posture from broadcast video
-Data source
+Extracting the shooter 2D&3D Posture from broadcast video (from [SoccerNet](https://www.soccer-net.org/)).  <br />
+#### Data source  <br />
 <p align="center"><img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/test_00006_original.gif" width="60%" alt="" /></p>
-Result
+
+#### Result  <br />
 <p align="center"><img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/test_00006.gif" width="60%" alt="" /></p>
 ### Data collection method: 
 The broadcast videos were collected from [SoccerNet](https://www.soccer-net.org/), and with annotation on actions, the videos were clipped (0.5 before and after the annotated ms, 25 frames total). The tracklet for the clips was then generated using a fine-tuned [YOLO v8](https://github.com/ultralytics/ultralytics) and [BoT-Sort](https://github.com/NirAharon/BoT-SORT). Furthermore, the shooter's traklet id was manually selected, and the cropped image was generated using the Bbox. The first 20 images' 2D postures (determined empirically) were manually annotated and lifted to 3D using the [MotionAGFormer](https://github.com/TaatiTeam/MotionAGFormer). This repository includes the modified code for [BoT-Sort](https://github.com/NirAharon/BoT-SORT) and [MotionAGFormer](https://github.com/TaatiTeam/MotionAGFormer).
