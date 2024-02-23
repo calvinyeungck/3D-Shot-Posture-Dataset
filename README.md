@@ -28,6 +28,7 @@ Extracting the shooter 2D&3D Posture from broadcast video (from [SoccerNet](http
 
 #### Result  <br />
 <p align="center"><img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/test_00006.gif" width="60%" alt="" /></p>
+
 ### Data collection method: 
 The broadcast videos were collected from [SoccerNet](https://www.soccer-net.org/), and with annotation on actions, the videos were clipped (0.5 before and after the annotated ms, 25 frames total). The tracklet for the clips was then generated using a fine-tuned [YOLO v8](https://github.com/ultralytics/ultralytics) and [BoT-Sort](https://github.com/NirAharon/BoT-SORT). Furthermore, the shooter's traklet id was manually selected, and the cropped image was generated using the Bbox. The first 20 images' 2D postures (determined empirically) were manually annotated and lifted to 3D using the [MotionAGFormer](https://github.com/TaatiTeam/MotionAGFormer). This repository includes the modified code for [BoT-Sort](https://github.com/NirAharon/BoT-SORT) and [MotionAGFormer](https://github.com/TaatiTeam/MotionAGFormer).
 
@@ -46,7 +47,8 @@ Step 3. Unzip the file
 ```
 unzip 3dsp.zip
 ```
-### Annotation and Visualization functions (Optional)
+The following are not required for retrieving the dataset.
+### Annotation and Visualization functions 
 Step 4. Install required package
 ```
 pip install -r requirements.txt
@@ -58,8 +60,14 @@ Download the parameters for the following models and place them accordingly.
 - [MotionAGFormer_3d](https://drive.google.com/file/d/1Iii5EwsFFm9_9lKBUPfN8bV5LmfkNUMP/view) at 3dsp_utils/MotionAGFormer/demo/lib/checkpoint/
 - [YOLOv8](https://drive.google.com/file/d/1zkFLB9VKK0axqq6WOwgth82BVBMglYjB/view?usp=sharing) at 3dsp_utils/bot_sort/yolov8_player/best.pt
 
+Step 6.1. Automated 3D Shooter Posture Extraction, results in /3dsp_utils/output.
+```
+cd path/to/this/repo/
+cd 3dsp_utils
+python demo.py -t <path/to/target/clips>
+```
 
-Step 6. Perform additional annotation on [SoccerNet](https://www.soccer-net.org/)
+Step 6.2. Perform additional annotation on [SoccerNet](https://www.soccer-net.org/)
 ```
 cd path/to/this/repo/
 cd 3dsp_utils
@@ -110,11 +118,11 @@ xxx.json   --- 'image_path'
             |          |- 'w'
             |          |- 'h'
             |
-            -- 'keypont_2d' --- joint id --- 'name'
+            -- 'keypoint_2d' --- joint id --- 'name'
             |                             |- 'x'
             |                             |- 'y'
             |
-            -- 'keypont_3d' --- joint id --- 'name'
+            -- 'keypoint_3d' --- joint id --- 'name'
                                             |- 'x'
                                             |- 'y'
                                             |- 'z'                                                   
@@ -131,6 +139,7 @@ xxx.json   --- 'image_path'
 [info]
 id = folder id 
 previous_id = id previously given to the clips
+shooter_tracklet_id = the tracklet if of the shooter
 gameTime = time of the game
 label = shot on target or shot off target
 annotated_position = the ms where the action is annotated
