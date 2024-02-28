@@ -22,3 +22,5 @@ analysis/pca+kmean_result/
 analysis/deep_learning+kmean_result/
 3dsp_backup.zip
 3dsp_utils/output/
+analysis/deep_learning+kmean_result_original/
+analysis/deep_learning+kmean_original/

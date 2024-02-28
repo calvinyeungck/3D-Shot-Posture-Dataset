@@ -41,10 +41,17 @@ class GraphLSTMDecoder(nn.Module):
         self.num_layers = num_layers
 
     def forward(self, x, h_n):
+        #inverse the order of x sequence,drop the last sequence and add a zero sequence at the beginning
+        x = torch.flip(x, dims=[1])
+        x = torch.cat([torch.zeros_like(x[:,0,:]).unsqueeze(1),x[:,:-1,:]],dim=1)
+
         # Expand h_n to (num_layer,batch,input_size) from (batch,input_size) apart from the first layer, other layers are 0
         h_n_expanded = torch.cat([h_n.unsqueeze(0)] + [torch.zeros_like(h_n).unsqueeze(0)] * (self.num_layers - 1), dim=0)
         output, _ = self.lstm(x, (h_n_expanded, torch.zeros_like(h_n_expanded))) # (batch,seq_len,input_size), ((num_layer,batch,input_size),cn)
         output = self.fc(output)
+
+        #inverse the order of output sequence
+        output = torch.flip(output, dims=[1])
         return output
 
 class GCNLSTMAutoencoder(nn.Module):
