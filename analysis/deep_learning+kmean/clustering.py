@@ -173,7 +173,7 @@ latent_variables = latent_variables.reshape(-1, lstm_hidden_size)
 df_kmean=pd.DataFrame(latent_variables)
 
 #determine the number of cluster
-# det_cluster_num(df_kmean,out_path)
+det_cluster_num(df_kmean,out_path)
 
 #set kmean number
 analysis_kmean(df_kmean,out_path,dataset_path,info_path,num_cluster=3)
