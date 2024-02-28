@@ -21,7 +21,7 @@ We provide 2 clustering methods, with pca+kmean or deep learning+kmeam. For the 
   <img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/t-SNE.png" alt="Image 2" style="width:45%;">
 </div>
 
-### Automated 3D Shooter Posture Extraction:
+### AutoSoccerPose: Automated 3D Shooter Posture Extraction:
 Extracting the shooter 2D&3D Posture from broadcast video (from [SoccerNet](https://www.soccer-net.org/)).  <br />
 #### Data source  <br />
 <p align="center"><img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/test_00006_original.gif" width="60%" alt="" /></p>
