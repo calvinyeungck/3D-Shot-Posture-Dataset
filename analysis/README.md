@@ -1,6 +1,9 @@
 # 3D Shot Posture Analysis
 This guide pertains to conducting clustering analysis using 3D posture data. The clustering results and cluster analysis are elaborated upon in the paper.
 
+## Pre-Processing
+Complete Step 4,5,8 in Annotation and Visualization functions. Use the result from step 8 for the following analysis
+
 ## Clustering with Unsupervised Deep Learning and Kmean
 Step 1. Pre-process the data
 ```

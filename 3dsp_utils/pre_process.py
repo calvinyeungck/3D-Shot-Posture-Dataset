@@ -101,7 +101,7 @@ def rotate_3d_keypoints_testing(folder):
             rotated_keypoints_3d.append(rotated_keypoints_3d_frame)   
         return np.array(rotated_keypoints_3d)
 
-def plot_3d_keypoints(key_points, folder):    
+def plot_3d_keypoints(key_points, folder,args=None):    
     video_length = len(key_points)
     joints_left = [4, 5, 6, 11, 12, 13]
     joints_right = [1, 2, 3, 14, 15, 16]
@@ -335,7 +335,7 @@ if __name__ == "__main__":
                 f.close()
 
         #3d pose visualization
-        plot_3d_keypoints(keypoints_3d, folder)
+        plot_3d_keypoints(keypoints_3d, folder, args)
 
         #save as gif
         if args.save_gif:

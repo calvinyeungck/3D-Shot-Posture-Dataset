@@ -22,5 +22,8 @@ analysis/pca+kmean_result/
 analysis/deep_learning+kmean_result/
 3dsp_backup.zip
 3dsp_utils/output/
+3dsp_utils/output_original/
 analysis/deep_learning+kmean_result_original/
 analysis/deep_learning+kmean_original/
+analysis/deep_learning+kmean/clustering copy.py
+3dsp_utils/demo_w_smooting.py

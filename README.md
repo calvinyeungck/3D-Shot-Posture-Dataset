@@ -1,7 +1,4 @@
 # 3D Shot Posture Dataset
-Todo
-- add the requirement.txt for visualization of 2d and 3d annotation
-
 This dataset consists of the 3d and 2d postures of professional football players under shot situations.
 
 <p align="center"><img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/00001.gif?raw=true&v=4" width="60%" alt="" /></p>

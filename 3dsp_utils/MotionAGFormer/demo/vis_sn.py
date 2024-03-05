@@ -470,6 +470,7 @@ def get_pose3D_demo(video_path, output_dir,video_length=20):
         plt.close(fig)
 
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--video', type=str, default='2.mp4', help='input video')

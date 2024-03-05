@@ -292,7 +292,7 @@ if __name__ == "__main__":
     parser.add_argument('--gpu', type=str, default='0', help='input video')
     #clips to be considered
     #we use the image in 3dsp dataset test/00001 as an example
-    parser.add_argument("-t","--traget_clip", type=str, default=os.getcwd()+"/example/test_00006.mp4", help="target clip to be considered")
+    parser.add_argument("-t","--traget_clip", type=str, default=os.getcwd()+"/example/test_00003.mp4", help="target clip to be considered")
     args = parser.parse_args()
     args.root = os.path.join(args.root, args.traget_clip.split("/")[-1].split(".")[0])
 
