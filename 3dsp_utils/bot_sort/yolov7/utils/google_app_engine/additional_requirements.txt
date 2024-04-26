@@ -1,5 +1,4 @@
 # add these requirements in your app on top of the existing ones
-# original requirement gunicorn==19.9.0 updated to gunicorn>=22.0.0 for security reason
 pip==18.1
 Flask==1.0.2
-gunicorn>=22.0.0 
+gunicorn==19.9.0
