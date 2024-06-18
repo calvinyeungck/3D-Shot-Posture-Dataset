@@ -1,5 +1,8 @@
 # 3D Shot Posture Dataset
-This dataset consists of the 3d and 2d postures of professional football players under shot situations.
+
+[![arXiv](https://img.shields.io/badge/arXiv-2210.06551-b31b1b.svg)](https://arxiv.org/abs/2405.12070)
+
+The Offical repo for the CVsports at CVPR paper "[AutoSoccerPose: Automated 3D posture Analysis of Soccer Shot Movements](https://openaccess.thecvf.com/content/CVPR2024W/CVsports/papers/Yeung_AutoSoccerPose_Automated_3D_Posture_Analysis_of_Soccer_Shot_Movements_CVPRW_2024_paper.pdf)". This dataset consists of the 3d and 2d postures of professional football players under shot situations.
 
 <p align="center"><img src="https://github.com/calvinyeungck/3D-Shot-Posture-Dataset/blob/master/3dsp_utils/image/00001.gif?raw=true&v=4" width="60%" alt="" /></p>
 
@@ -153,5 +156,11 @@ time = time of the video in seconds
  Please consider citing our work if you find it helpful to yours:
 
 ```
-TBA
+@inproceedings{yeung2024autosoccerpose,
+  title={AutoSoccerPose: Automated 3D posture Analysis of Soccer Shot Movements},
+  author={Yeung, Calvin and Ide, Kenjiro and Fujii, Keisuke},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={3214--3224},
+  year={2024}
+}
 ```
